@@ -2,7 +2,9 @@
 
 import os
 import openai
-import gradio
+
+import asyncio
+from aiohttp import web
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -22,5 +24,8 @@ def transcribe(audio):
     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages);
     return response;
 
-ui = gradio.Interface(fn=transcribe, inputs=gradio.Audio(source="microphone", type="filepath"), outputs="text").launch()
-ui.launch()
+#def initWeb():
+#    app = web.Application() #https://docs.aiohttp.org/en/stable/web_quickstart.html
+#    app.router.add.get("/", )
+
+
