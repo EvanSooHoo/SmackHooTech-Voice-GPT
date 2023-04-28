@@ -1,6 +1,7 @@
-#to view, use python3 main.py and goto localhost:7860
+#! /usr/bin/env python3
 
 import os
+import sys
 import openai
 
 import asyncio
@@ -39,7 +40,9 @@ app.add_routes([
 ])
 
 if __name__ == '__main__':
-    web.run_app(app, port=8099)
+    port = int(sys.argv[1])
+    print( f"Listening on port {port}" )
+    web.run_app(app, port=port)
 #def initWeb():
 #    app = web.Application() #https://docs.aiohttp.org/en/stable/web_quickstart.html
 #    app.router.add.get("/", )
